@@ -4,10 +4,15 @@ class Solution {
         return 0;
         Arrays.sort(nums);
         int ans=Integer.MAX_VALUE,temp=0;
-        for(int r=0;r<nums.length-k+1;r++){
-            int l=r+k-1;
-        temp=nums[l]-nums[r];
+        int l=0;
+        for(int r=0;r<nums.length;r++){
+            if(r-l==k){
+                l++;
+            }
+            if(r-l+1==k){
+        temp=nums[r]-nums[l];
         ans=Math.min(temp,ans);
+            }
         }
         return ans;
     }
