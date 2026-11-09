@@ -1,19 +1,24 @@
 class Solution {
     public int maximumCount(int[] nums) {
-        int nc=0,pc=0;
-        //int max=Integer.MIN_VALUE;
-        for(int i=0;i<nums.length;i++){
-            if(nums[i]<0){
-                nc++;
-            }
-            else if(nums[i]==0){
-                continue;
-            }
-            else{
-                pc++;
-            }
+        int a=leftMost(nums,0);
+        int b=nums.length-leftMost(nums,1);
+        return Math.max(a,b);
+    }
+    public int leftMost(int[] nums,int target){
+       int l=0,r=nums.length-1;
+       while(l<=r){
+        int mid=l+(r-l)/2;
+        if(nums[mid]==target){
+            r=mid-1;
         }
-        return Math.max(pc,nc);
+        else if(nums[mid]>target){
+            r=mid-1;
+        }
+        else{
+            l=mid+1;
+        }
+       }
+       return l;
         
     }
 }
