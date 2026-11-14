@@ -24,7 +24,7 @@ class Solution {
         for(int n:weights){
             max=Math.max(max,n);
         }
-        int l=1,r=Integer.MAX_VALUE;
+        int l=max,r=Integer.MAX_VALUE;
         while(l<=r){
             int mid=l+(r-l)/2;
             if(isPossible(weights,days,mid)){
